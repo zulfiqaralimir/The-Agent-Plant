@@ -10,8 +10,11 @@ export default function Home() {
       </p>
 
       <p style={{ marginTop: "2rem" }}>
-        Start reading soon.
-      </p>
+  <a href="/docs" style={{ color: "#2563eb", fontWeight: 600 }}>
+    Start reading →
+  </a>
+</p>
+
     </main>
   );
 }
