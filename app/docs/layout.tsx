@@ -2,7 +2,8 @@
 
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import SearchBox from "@/components/SearchBox";
+import SearchBox from "../components/SearchBox";
+
 
 export default function DocsLayout({
   children,
