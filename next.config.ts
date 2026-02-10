@@ -11,6 +11,11 @@ const withMDX = nextMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+
+  // 🔴 IMPORTANT: Disable Turbopack for MDX compatibility
+  experimental: {
+    turbo: false,
+  },
 };
 
 export default withMDX(nextConfig);
