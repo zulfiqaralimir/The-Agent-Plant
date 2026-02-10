@@ -1,9 +1,8 @@
 "use client";
 
-import SearchBox from "../components/SearchBox";
-
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import SearchBox from "@/components/SearchBox";
 
 export default function DocsLayout({
   children,
@@ -38,12 +37,14 @@ export default function DocsLayout({
         }}
       >
         <h2 style={{ marginBottom: "12px" }}>The Agent Plant</h2>
-<SearchBox />
 
+        {/* Search */}
+        <SearchBox />
 
+        {/* Navigation */}
         <nav>
-          <a href="/docs" style={linkStyle("/docs")}>
-            Start Here
+          <a href="/docs/thesis" style={linkStyle("/docs/thesis")}>
+            The Agent Factory Thesis
           </a>
 
           <a href="/docs/preface" style={linkStyle("/docs/preface")}>
