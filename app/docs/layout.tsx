@@ -1,73 +1,46 @@
-"use client";
-
-import type { ReactNode } from "react";
-import { usePathname } from "next/navigation";
-import SearchBox from "../components/SearchBox";
-
+import Link from "next/link";
 
 export default function DocsLayout({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-
-  const linkStyle = (href: string) => ({
-    display: "block",
-    padding: "6px 0",
-    fontWeight: pathname === href ? "600" : "400",
-    color: pathname === href ? "#2563eb" : "#000",
-    textDecoration: pathname === href ? "underline" : "none",
-  });
-
   return (
-    <div
-      style={{
-        display: "flex",
-        minHeight: "100vh",
-        fontFamily: "sans-serif",
-      }}
-    >
+    <div style={{ display: "flex" }}>
       {/* SIDEBAR */}
       <aside
         style={{
           width: "260px",
-          padding: "24px",
-          borderRight: "1px solid #e5e5e5",
-          backgroundColor: "#fafafa",
+          padding: "2rem 1.5rem",
+          borderRight: "1px solid #e5e7eb",
+          minHeight: "100vh",
         }}
       >
-        <h2 style={{ marginBottom: "12px" }}>The Agent Plant</h2>
+        <h2 style={{ marginBottom: "1rem" }}>The Agent Plant</h2>
 
-        {/* Search */}
-        <SearchBox />
+        <nav style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <Link href="/docs/thesis">The Agent Factory Thesis</Link>
+          <Link href="/docs/preface">PREFACE: The AI Agent Plant</Link>
 
-        {/* Navigation */}
-        <nav>
-          <a href="/docs/thesis" style={linkStyle("/docs/thesis")}>
-            The Agent Factory Thesis
-          </a>
+          <hr style={{ margin: "1rem 0" }} />
 
-          <a href="/docs/preface" style={linkStyle("/docs/preface")}>
-            Preface
-          </a>
+          <strong>Part 1: General Agents:Foundations</strong>
 
-          <a href="/docs/chapter-1" style={linkStyle("/docs/chapter-1")}>
-            Chapter 1 — Introduction
-          </a>
+          <Link href="/docs/part-1">Overview</Link>
+          <Link href="/docs/part-1/chapter-1">
+            Chapter 1: The AI Agent Factory Paradigm
+          </Link>
+          <Link href="/docs/part-1/chapter-2">
+            Chapter 2: Markdown
+          </Link>
+          <Link href="/docs/part-1/chapter-3">
+            Chapter 3: Harness Engineering
+          </Link>
         </nav>
       </aside>
 
       {/* MAIN CONTENT */}
-      <main
-        style={{
-          flex: 1,
-          padding: "48px",
-          backgroundColor: "#ffffff",
-        }}
-      >
-        {children}
-      </main>
+      <main style={{ flex: 1, padding: "3rem" }}>{children}</main>
     </div>
   );
 }
