@@ -91,6 +91,10 @@ th{font-family:"Bricolage Grotesque",sans-serif}
 .checklist li{padding-left:1.8rem;position:relative}
 .checklist li::before{content:"";position:absolute;left:0;top:.35rem;width:1.1rem;height:1.1rem;border:2px solid var(--teal);border-radius:4px}
 
+.qa{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.4rem 1.2rem 1rem;margin:1.2rem 0}
+.qa h3{display:flex;align-items:center;gap:.7rem;margin:.9rem 0 .3rem}
+.qn{flex:none;width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;font-size:1rem;color:#fff}
+.example{background:var(--teal-soft);border-radius:8px;padding:.6rem .9rem}
 footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
 
 /* Animations */
@@ -336,10 +340,10 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
 <section>
   <div class="wrap">
     <h2>Step 4: Build your first harness</h2>
-    <p class="lead">Now let's build one for a real repo. You need about 30 minutes and four small files or settings.</p>
+    <p class="lead">Now let's build one for a real repo. You need about 30 minutes and <mark class="hl-teal">four small files or settings.</mark></p>
 
     <h3>4.1 Write the rules file</h3>
-    <p>Create <code>AGENTS.md</code> in your repo root. Keep it <strong>short and specific</strong>.</p>
+    <p>Create <code>AGENTS.md</code> in your <mark class="hl-rose">repo root</mark>. Keep it <mark class="hl-violet"><strong>short and specific</strong>.</mark></p>
 <pre><code># AGENTS.md
 
 ## Project
@@ -367,10 +371,10 @@ Tests pass, lint is clean, PR explains the change.</code></pre>
     <p>Don't let the agent work directly on <code>main</code>. The easiest option is a <strong>Git worktree</strong>:</p>
 <pre><code>git worktree add ../myapp-agent -b agent/login-feature
 cd ../myapp-agent</code></pre>
-    <p>Prefer the cloud? Open the repo in <strong>GitHub Codespaces</strong> instead. Free accounts get about 60 hours a month on a 2-core machine.</p>
+    <p>Prefer the cloud? Open the repo in <strong>GitHub Codespaces</strong> instead. <mark class="hl-amber">Free accounts get about 60 hours a month on a 2-core machine.</mark></p>
 
     <h3>4.4 Add a state file</h3>
-    <p>Create <code>progress.md</code> and ask the agent to update it at the end of every session.</p>
+    <p>Create <code>progress.md</code> and ask the agent to <mark class="hl-teal">update it at the end of every session.</mark></p>
 <pre><code># progress.md
 ## Done
 - Login route created
@@ -440,6 +444,87 @@ jobs:
       <li><strong>Tests + CI</strong> running on every push</li>
     </ul>
     <div class="callout"><strong>Remember:</strong> better models will keep arriving. A good harness makes every one of them work better in <em>your</em> project, from day one.</div>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="wrap">
+    <h2>Your Questions Answered</h2>
+    <p class="lead">Quick answers to the questions people ask most, each with one practical example.</p>
+
+    <div class="qa">
+      <h3><span class="qn c-teal">1</span>What is AGENTS.md?</h3>
+      <p>A file in your <strong>repo root</strong> that tells every AI coding agent how your project works. You write it once, and Claude Code, Codex and Copilot can all follow it.</p>
+      <p class="example"><strong>Example:</strong> <code>Run tests: npm test. Never edit /migrations.</code></p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-violet">2</span>AGENTS.md vs CLAUDE.md</h3>
+      <p><strong>AGENTS.md</strong> is the shared rulebook for all agents. <strong>CLAUDE.md</strong> is Claude Code's own file.</p>
+<pre><code># AGENTS.md
+Run tests: npm test
+Use TypeScript.
+
+# CLAUDE.md
+@AGENTS.md</code></pre>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-rose">3</span>One line that points to your rules</h3>
+      <p>CLAUDE.md holds only <code>@AGENTS.md</code>. The <code>@</code> tells Claude to load that file, so <strong>all your rules live in one place</strong>.</p>
+      <p class="example"><strong>Example:</strong> you add "Use Python 3.12" to AGENTS.md, and Claude, Codex and Copilot all pick it up instantly.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-amber">4</span>Environment and Feedback</h3>
+      <p><strong>Environment</strong> is where the agent works. <strong>Feedback</strong> tells it whether it succeeded.</p>
+      <p class="example"><strong>Example:</strong> the agent edits code in a sandbox, runs <code>npm test</code>, sees "2 tests failed," and fixes them.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-ink">5</span>Sandbox and main project</h3>
+      <p>Your <strong>main project</strong> is your original working code, usually the <code>main</code> branch. A <strong>sandbox</strong> is a separate space where the agent can't damage it.</p>
+      <ul>
+        <li><strong>Git branch or worktree:</strong> a separate copy of your code</li>
+        <li><strong>Docker container:</strong> a mini computer inside your computer</li>
+        <li><strong>Cloud sandbox:</strong> a remote machine, like Codespaces</li>
+      </ul>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-teal">6</span>Codex and GitHub Codespaces</h3>
+      <p><strong>Codex</strong> is OpenAI's coding agent. <strong>Codespaces</strong> is GitHub's cloud computer with VS Code in your browser.</p>
+      <p class="example"><strong>Example:</strong> open any repo, click <strong>Code → Codespaces</strong>, and start coding with nothing installed.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-violet">7</span>Is Codespaces free?</h3>
+      <p>Yes, with limits. Free accounts get <strong>120 core hours</strong> (60 hours on a 2-core machine) and <strong>15 GB storage</strong> per month. After that, a 2-core machine costs <strong>$0.18/hour</strong>.</p>
+      <p class="example"><strong>Example:</strong> without a payment method, it simply stops when free hours run out, so there's no surprise bill.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-rose">8</span>How to benefit from Codespaces</h3>
+      <ul>
+        <li><strong>Code from any device</strong></li>
+        <li><strong>Test agents safely</strong></li>
+        <li><strong>Same setup every time</strong> with a <code>.devcontainer</code> file</li>
+        <li><strong>Run heavy builds</strong> on GitHub's machine instead of your laptop</li>
+      </ul>
+      <p class="example"><strong>Example:</strong> Repo → <strong>Code</strong> → <strong>Codespaces</strong> → <strong>Create codespace on main</strong>. Stop it when you're done to save hours.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-amber">9</span>Can Codespaces host an always-on agent?</h3>
+      <p><strong>No.</strong> It stops after about 30 minutes idle, so it's for <em>building</em>, not <em>hosting</em>.</p>
+      <p>Better hosting options:</p>
+      <ul>
+        <li><strong>Hugging Face Spaces:</strong> free demos</li>
+        <li><strong>Render / Railway:</strong> always-on APIs</li>
+        <li><strong>Google Cloud Run:</strong> pay per use</li>
+        <li><strong>VPS:</strong> full control, runs 24/7</li>
+      </ul>
+    </div>
   </div>
 </section>
 
