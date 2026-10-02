@@ -166,7 +166,7 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
     <h3>A simple way to picture it</h3>
     <ul>
       <li><strong>The model is the engine.</strong> Powerful, but it can't drive anywhere on its own.</li>
-      <li><strong>The harness is the car.</strong> Steering, brakes, dashboard and road rules.</li>
+      <li><strong>The harness is the car.</strong> <mark class="hl-amber">Steering, brakes, dashboard and road rules.</mark></li>
       <li><strong>Harness engineering</strong> is the job of building that car so the engine gets you somewhere safely.</li>
     </ul>
 
@@ -212,10 +212,10 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
       <div class="num c-teal">1</div>
       <div>
         <h3>Instructions: tell it the rules</h3>
-        <p>The agent needs to know how <em>your</em> project works. You write this down once in a file like <code>AGENTS.md</code>.</p>
+        <p>The agent needs to know <mark class="hl-violet">how <em>your</em> project works</mark>. You write this down once in a file like <mark class="hl-teal"><code>AGENTS.md</code></mark>.</p>
         <ul>
           <li><strong>What goes in:</strong> project overview, test commands, coding style, and what "done" means.</li>
-          <li><strong>Example:</strong> "Run tests with <code>npm test</code>. Never edit <code>/migrations</code>."</li>
+          <li><strong>Example:</strong> <mark class="hl-rose">"Run tests with <code>npm test</code>. Never edit <code>/migrations</code>."</mark></li>
         </ul>
       </div>
     </div>
@@ -227,7 +227,7 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
         <p>A model can only talk. Tools let it <strong>act</strong>: read files, edit code, run commands, search the web.</p>
         <ul>
           <li><strong>Example:</strong> Claude Code can read your repo, edit a file and run <code>pytest</code> on its own.</li>
-          <li><strong>Key idea:</strong> give only the tools the task needs. Fewer tools means fewer mistakes.</li>
+          <li><strong>Key idea:</strong> give only the tools the task needs. <mark class="hl-amber">Fewer tools means fewer mistakes.</mark></li>
         </ul>
       </div>
     </div>
@@ -248,10 +248,10 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
       <div class="num c-amber">4</div>
       <div>
         <h3>State: help it remember</h3>
-        <p>Agents forget when a session ends or the context fills up. State is the agent's <strong>notebook</strong>.</p>
+        <p>Agents forget when a session ends or the context fills up. <mark class="hl-violet">State is the agent's <strong>notebook</strong>.</mark></p>
         <ul>
-          <li><strong>Example:</strong> a <code>progress.md</code> file listing what's done, what's next, and any open problems.</li>
-          <li><strong>Key idea:</strong> the next session reads the notebook and continues, instead of starting from zero.</li>
+          <li><strong>Example:</strong> a <mark class="hl-teal"><code>progress.md</code> file listing what's done, what's next, and any open problems.</mark></li>
+          <li><strong>Key idea:</strong> <mark class="hl-rose">the next session reads the notebook and continues, instead of starting from zero.</mark></li>
         </ul>
       </div>
     </div>
@@ -260,9 +260,9 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
       <div class="num c-ink">5</div>
       <div>
         <h3>Feedback: tell it when it's wrong</h3>
-        <p>The agent needs a clear signal of <strong>pass or fail</strong>. Without it, it guesses.</p>
+        <p>The agent needs a clear signal of <strong>pass or fail</strong>. <mark class="hl-amber">Without it, it guesses.</mark></p>
         <ul>
-          <li><strong>Examples:</strong> test results, linter errors, type checks, and CI checks on GitHub.</li>
+          <li><strong>Examples:</strong> test results, <mark class="hl-violet">linter errors, type checks, and CI checks on GitHub.</mark></li>
           <li><strong>Key idea:</strong> "2 tests failed" is far more useful to an agent than "looks fine to me."</li>
         </ul>
       </div>
@@ -324,11 +324,11 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
 
     <h3>Walk through one lap</h3>
     <ul>
-      <li><strong>Read:</strong> the agent opens <code>AGENTS.md</code> and learns tests run with <code>npm test</code>.</li>
+      <li><strong>Read:</strong> the agent opens <code>AGENTS.md</code> and <mark class="hl-teal">learns tests run with <code>npm test</code>.</mark></li>
       <li><strong>Act:</strong> it writes a new login function inside a Git worktree.</li>
-      <li><strong>Check:</strong> it runs the tests and sees "1 test failed: empty password accepted."</li>
-      <li><strong>Save:</strong> it notes "login works, fix empty-password check" in <code>progress.md</code>.</li>
-      <li><strong>Repeat:</strong> it fixes the check, runs tests again, and everything passes. Done.</li>
+      <li><strong>Check:</strong> <mark class="hl-rose">it runs the tests and sees "1 test failed: empty password accepted."</mark></li>
+      <li><strong>Save:</strong> <mark class="hl-amber">it notes "login works, fix empty-password check" in <code>progress.md</code>.</mark></li>
+      <li><strong>Repeat:</strong> <mark class="hl-violet">it fixes the check, runs tests again, and everything passes. Done.</mark></li>
     </ul>
   </div>
 </section>
