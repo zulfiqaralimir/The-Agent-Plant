@@ -93,6 +93,23 @@ export default function Home() {
             >
               Anthropic Partners Academy ↗
             </a>
+            <a
+              href="https://eulerapp.com/partners?view=home&related="
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                pointerEvents: "auto",
+                display: "inline-block",
+                padding: "14px 28px",
+                borderRadius: 999,
+                border: "1px solid #38bdf8",
+                color: "#38bdf8",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Euler Partners ↗
+            </a>
           </div>
         </div>
       </section>
