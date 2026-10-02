@@ -22,6 +22,7 @@ export type PrepLink = {
 
 export type PrepModuleDetail = {
   eyebrow: string;
+  startUrl?: string;
   intro: string;
   sections: { title: string; screens: number }[];
   stats: {
@@ -228,6 +229,8 @@ export const certifications: Certification[] = [
           slug: "mso-foundations",
           detail: {
             eyebrow: "Developer · Module 1",
+            startUrl:
+              "https://anthropic-partners.skilljar.com/path/claude-certified-developer-foundations/mso-foundations/486742/scorm/1zuxexjatih0p",
             intro:
               "Before you write a line of code against Claude, it helps to know what the words mean. This module introduces the model fundamentals and the technical foundations that the rest of the Developer course assumes you already have.",
             sections: [

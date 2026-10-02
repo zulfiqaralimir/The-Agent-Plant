@@ -143,6 +143,27 @@ export default async function ModulePage({
         </a>
       </p>
 
+      {detail.startUrl && (
+        <p style={{ marginTop: "2rem", textAlign: "center" }}>
+          <a
+            href={detail.startUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              padding: "0.75rem 1.5rem",
+              borderRadius: 999,
+              background: "#0b2a45",
+              color: "#fff",
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            Start the lesson ↗
+          </a>
+        </p>
+      )}
+
       <footer
         style={{
           display: "flex",
