@@ -65,6 +65,60 @@ export default async function ModulePage({
         ))}
       </div>
 
+      {detail.outcomes && (
+        <>
+          <h2>What You Will Be Able to Do</h2>
+          <p>By the end of this module, you will be able to:</p>
+          <ol
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.75rem",
+            }}
+          >
+            {detail.outcomes.map((o, i) => (
+              <li
+                key={o.key}
+                style={{
+                  display: "flex",
+                  gap: "0.75rem",
+                  padding: "0.75rem 1rem",
+                  border: "1px solid #e5e7eb",
+                  borderLeft: "4px solid #0b2a45",
+                  borderRadius: 6,
+                }}
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    flex: "none",
+                    width: 28,
+                    height: 28,
+                    borderRadius: "50%",
+                    background: "#0b2a45",
+                    color: "#fff",
+                    fontWeight: 700,
+                    fontSize: "0.85rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {i + 1}
+                </span>
+                <div>
+                  <strong style={{ color: "#0b2a45" }}>{o.key}</strong>
+                  <div>{o.text}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+
       <h2>Table of Contents</h2>
       <ol
         style={{
@@ -162,6 +216,15 @@ export default async function ModulePage({
             Start the lesson ↗
           </a>
         </p>
+      )}
+
+      {detail.disclaimer && (
+        <details style={{ marginTop: "2rem", fontSize: "0.85rem", color: "#4b5563" }}>
+          <summary style={{ cursor: "pointer", fontWeight: 600 }}>
+            Disclaimer / Notice for Educational Content
+          </summary>
+          <p style={{ lineHeight: 1.6 }}>{detail.disclaimer}</p>
+        </details>
       )}
 
       <footer

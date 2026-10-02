@@ -24,6 +24,8 @@ export type PrepModuleDetail = {
   eyebrow: string;
   startUrl?: string;
   intro: string;
+  outcomes?: { key: string; text: string }[];
+  disclaimer?: string;
   sections: { title: string; screens: number }[];
   stats: {
     screens: number;
@@ -233,6 +235,26 @@ export const certifications: Certification[] = [
               "https://anthropic-partners.skilljar.com/path/claude-certified-developer-foundations/mso-foundations/486742/scorm/1zuxexjatih0p",
             intro:
               "Before you write a line of code against Claude, it helps to know what the words mean. This module introduces the model fundamentals and the technical foundations that the rest of the Developer course assumes you already have.",
+            outcomes: [
+              {
+                key: "Tokens, context, sampling",
+                text: "Explain what a token is, how the context window works as a fixed budget, why sampling makes outputs vary, and what non-determinism means for testing and evals.",
+              },
+              {
+                key: "Model family and reasoning",
+                text: "Describe the Claude model family and its capability tiers, and distinguish choosing a model from enabling a reasoning mode such as extended thinking.",
+              },
+              {
+                key: "Prompting modes",
+                text: "Choose between zero-shot, one-shot, and multi-shot prompting, and weigh the cost and quality trade-off of adding examples.",
+              },
+              {
+                key: "Accessing Claude",
+                text: "Describe how a developer accesses Claude: SDK versus raw REST, synchronous versus streaming responses, and asynchronous patterns for high-volume work.",
+              },
+            ],
+            disclaimer:
+              "We built this Developer course Module 1: MSO Foundations to help you get real work done with Claude. Treat it as educational content. It doesn't constitute legal, financial, or other professional advice, so adapt what you learn to your own situation. Our products and services evolve quickly, so certain content may contain errors or be outdated; remember to verify on Anthropic’s website or docs. Examples and scenarios used in the course are illustrative and often fictitious. If the course material mentions a company or product, it doesn't mean Anthropic endorses them, they endorse Anthropic, or that we're affiliated. Also note your use of Anthropic products and services is covered by our terms, policies and documentation; if anything in this course conflicts with them, they control.",
             sections: [
               { title: "Orientation", screens: 1 },
               { title: "How LLMs Behave", screens: 1 },
