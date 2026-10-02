@@ -20,6 +20,24 @@ export type PrepLink = {
   blurb: string;
 };
 
+export type PrepModule = {
+  title: string;
+  url: string;
+  minutes: number;
+  summary: string;
+  bookLab: string;
+};
+
+export type PrepCourse = {
+  title: string;
+  url: string;
+  registerUrl: string;
+  summary: string;
+  objectives: string[];
+  prerequisites: string[];
+  modules: PrepModule[];
+};
+
 export type Certification = {
   slug: string;
   name: string;
@@ -34,7 +52,11 @@ export type Certification = {
   exam?: Exam;
   domains?: Domain[];
   prepLinks?: PrepLink[];
+  prepCourse?: PrepCourse;
 };
+
+const BASE =
+  "https://anthropic-partners.skilljar.com/path/claude-certified-developer-foundations/";
 
 export const certifications: Certification[] = [
   {
@@ -134,6 +156,74 @@ export const certifications: Certification[] = [
         blurb: "The official exam guide.",
       },
     ],
+    prepCourse: {
+      title: "Claude Certified Developer – Foundations Prep Course (Free)",
+      url: "https://anthropic-partners.skilljar.com/path/claude-certified-developer-foundations",
+      registerUrl: "https://anthropic-partners.skilljar.com/checkout/24pzndkd8xvcv",
+      summary:
+        "Learn to build production-grade applications, agents, and workflows on Claude, and to make engineering decisions that determine whether code holds up when real users depend on it.",
+      objectives: [
+        "Explain how Claude works at the level that affects engineering: tokens, the context window as a fixed budget, sampling and non-determinism, model tiers, SDK vs REST",
+        "Write production-ready prompts (system prompts, XML, few-shot, constraints) and diagnose underperforming prompts",
+        "Define tool schemas, build the tool-use loop, and manage extended thinking across multi-turn work",
+        "Build a production agent with the right orchestration, memory scope, and human-in-the-loop checkpoints for irreversible actions",
+        "Run Claude Code under a permission model, give it durable project context, package workflows as Skills and plugins, and connect to enterprise systems through MCP without leaking credentials",
+        "Build eval suites that define \"done,\" plus test and tracing layers that catch regressions, within cost, latency, and reliability budgets",
+        "Secure an integration against prompt injection, untrusted input, and exposed secrets",
+        "Package a working build into a reusable accelerator, choose where workloads run, and contribute assets to shared infrastructure",
+      ],
+      prerequisites: [
+        "Claude 101",
+        "Claude Code 101",
+        "Claude Platform 101",
+        "Claude Code in Action",
+        "AI Fluency: Framework & Foundations",
+        "Building with the Claude API",
+        "Introduction to Model Context Protocol",
+        "Model Context Protocol: Advanced Topics",
+        "AI Capabilities and Limitations",
+      ],
+      modules: [
+        {
+          title: "MSO Foundations",
+          url: BASE + "mso-foundations",
+          minutes: 57,
+          summary: "Model fundamentals and technical foundations.",
+          bookLab: "Secure server-side Claude API route; choose a model tier.",
+        },
+        {
+          title: "Production-Grade Prompting, Agents & Tool Use",
+          url: BASE + "production-grade-prompting-agents-tool-use",
+          minutes: 209,
+          summary: "Reliable prompts, tools, context management, agent loops.",
+          bookLab:
+            "\"Ask this chapter\" with a system prompt, structured output and a search-the-book tool.",
+        },
+        {
+          title: "Claude Code, MCP & Integration",
+          url: BASE + "claude-code-mcp-integration",
+          minutes: 142,
+          summary: "Make an integration configurable, shareable and safe.",
+          bookLab:
+            "AGENTS.md/CLAUDE.md harness and an MCP server exposing book chapters.",
+        },
+        {
+          title: "Production Engineering, Evals & Security",
+          url: BASE + "production-engineering-evals-security",
+          minutes: 211,
+          summary: "Prove an agent holds up under real traffic.",
+          bookLab: "Eval set, prompt-injection checks, cost and rate limits.",
+        },
+        {
+          title: "Accelerators & IP Contribution",
+          url: BASE + "accelerators-ip-contribution",
+          minutes: 155,
+          summary: "Package a build for reuse and deployment.",
+          bookLab:
+            "Package the \"Ask this chapter\" feature as a reusable component.",
+        },
+      ],
+    },
   },
   {
     slug: "architect-foundations",

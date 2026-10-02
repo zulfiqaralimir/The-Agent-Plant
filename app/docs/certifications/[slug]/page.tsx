@@ -5,6 +5,7 @@ import {
   getCertification,
   type Domain,
   type Exam,
+  type PrepCourse,
   type PrepLink,
 } from "../data";
 
@@ -120,6 +121,137 @@ function Domains({ domains }: { domains: Domain[] }) {
   );
 }
 
+function PrepCourseSection({ course }: { course: PrepCourse }) {
+  const total = course.modules.reduce((sum, m) => sum + m.minutes, 0);
+  const linkStyle = {
+    display: "inline-block",
+    padding: "0.5rem 1rem",
+    borderRadius: 999,
+    border: "1px solid #0b2a45",
+    fontWeight: 600,
+    textDecoration: "none",
+  } as const;
+  return (
+    <>
+      <h2>Prep Course</h2>
+      <p>
+        <strong>{course.title}</strong>
+      </p>
+      <p>{course.summary}</p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+        <a
+          href={course.registerUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ ...linkStyle, background: "#0b2a45", color: "#fff" }}
+        >
+          Register ↗
+        </a>
+        <a
+          href={course.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ ...linkStyle, color: "#0b2a45" }}
+        >
+          Open course ↗
+        </a>
+      </div>
+      <p>
+        <strong>Total time:</strong> {Math.floor(total / 60)} h {total % 60} min
+        across {course.modules.length} modules
+      </p>
+
+      <h3>Learning Objectives</h3>
+      <ul style={{ lineHeight: 1.7 }}>
+        {course.objectives.map((o) => (
+          <li key={o}>{o}</li>
+        ))}
+      </ul>
+
+      <h3>Recommended First</h3>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+        {course.prerequisites.map((p) => (
+          <span
+            key={p}
+            style={{
+              padding: "0.25rem 0.7rem",
+              borderRadius: 999,
+              background: "#f1f5f9",
+              border: "1px solid #cbd5e1",
+              color: "#0b2a45",
+              fontSize: "0.85rem",
+            }}
+          >
+            {p}
+          </span>
+        ))}
+      </div>
+
+      <h3>Modules</h3>
+      <ol
+        style={{
+          listStyle: "none",
+          margin: "0 0 0 14px",
+          padding: 0,
+          borderLeft: "2px solid #0b2a45",
+        }}
+      >
+        {course.modules.map((m, i) => (
+          <li
+            key={m.url}
+            style={{ position: "relative", padding: "0 0 1.5rem 2rem" }}
+          >
+            <span
+              aria-hidden
+              style={{
+                position: "absolute",
+                left: -15,
+                top: 0,
+                width: 28,
+                height: 28,
+                borderRadius: "50%",
+                background: "#0b2a45",
+                color: "#fff",
+                fontSize: "0.85rem",
+                fontWeight: 700,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {i + 1}
+            </span>
+            <a
+              href={m.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontWeight: 600, color: "#0b2a45" }}
+            >
+              {m.title} ↗
+            </a>
+            <div style={{ fontSize: "0.85rem", color: "#4b5563" }}>
+              {m.minutes} min
+            </div>
+            <div>{m.summary}</div>
+            <div
+              style={{
+                marginTop: 6,
+                padding: "0.5rem 0.75rem",
+                background: "#f1f5f9",
+                borderLeft: "4px solid #0b2a45",
+                borderRadius: 4,
+                fontSize: "0.95rem",
+              }}
+            >
+              <strong>Build in The Agent Plant:</strong> {m.bookLab}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
 function Prepare({ links }: { links: PrepLink[] }) {
   return (
     <>
@@ -186,6 +318,7 @@ export default async function CertificationPage({
       {sorted.length > 0 && (
         <>
           <Domains domains={sorted} />
+          {cert.prepCourse && <PrepCourseSection course={cert.prepCourse} />}
           <h2>Study Order</h2>
           <ol style={{ lineHeight: 1.8 }}>
             {sorted.map((d) => (
