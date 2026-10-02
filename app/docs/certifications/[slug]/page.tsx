@@ -121,6 +121,22 @@ function Domains({ domains }: { domains: Domain[] }) {
   );
 }
 
+function Mark({ color, children }: { color: string; children: React.ReactNode }) {
+  return (
+    <mark
+      style={{
+        background: color,
+        color: "#0b2a45",
+        fontWeight: 700,
+        padding: "0 4px",
+        borderRadius: 3,
+      }}
+    >
+      {children}
+    </mark>
+  );
+}
+
 function PrepCourseSection({ course }: { course: PrepCourse }) {
   const total = course.modules.reduce((sum, m) => sum + m.minutes, 0);
   const linkStyle = {
@@ -205,8 +221,11 @@ function PrepCourseSection({ course }: { course: PrepCourse }) {
 
           <h3>What Decides the Outcome</h3>
           <p>
-            These four choices decide whether a prototype becomes{" "}
-            <strong>a system you can defend in a leadership review</strong>:
+            These <Mark color="#bae6fd">four choices</Mark> decide whether a{" "}
+            <Mark color="#fde68a">
+              prototype becomes a system you can defend in a leadership review
+            </Mark>
+            :
           </p>
           <ul style={{ lineHeight: 1.8 }}>
             {course.intro.decisions.map((d) => (
@@ -217,7 +236,15 @@ function PrepCourseSection({ course }: { course: PrepCourse }) {
           </ul>
 
           <h3>What You Get</h3>
-          <p>{course.intro.outcome}</p>
+          <p>
+            This course teaches the{" "}
+            <Mark color="#bbf7d0">
+              hands-on builder to operate Claude as a production system, by
+              building the engineering judgment that turns a prototype into
+              something deployed with confidence
+            </Mark>
+            .
+          </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {course.intro.outcomeKeys.map((k) => (
               <span
