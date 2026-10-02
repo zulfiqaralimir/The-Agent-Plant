@@ -60,21 +60,40 @@ export default function Home() {
             Building and scaling AI agents, from a single worker to a
             factory that runs itself.
           </p>
-          <Link
-            href="/docs"
-            style={{
-              pointerEvents: "auto",
-              display: "inline-block",
-              padding: "14px 28px",
-              borderRadius: 999,
-              background: "#38bdf8",
-              color: "#04202f",
-              fontWeight: 600,
-              textDecoration: "none",
-            }}
-          >
-            Start reading →
-          </Link>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+            <Link
+              href="/docs"
+              style={{
+                pointerEvents: "auto",
+                display: "inline-block",
+                padding: "14px 28px",
+                borderRadius: 999,
+                background: "#38bdf8",
+                color: "#04202f",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Start reading →
+            </Link>
+            <a
+              href="https://anthropic-partners.skilljar.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                pointerEvents: "auto",
+                display: "inline-block",
+                padding: "14px 28px",
+                borderRadius: 999,
+                border: "1px solid #38bdf8",
+                color: "#38bdf8",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Anthropic Partners Academy ↗
+            </a>
+          </div>
         </div>
       </section>
     </main>
