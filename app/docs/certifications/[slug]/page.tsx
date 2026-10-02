@@ -137,7 +137,84 @@ function PrepCourseSection({ course }: { course: PrepCourse }) {
       <p>
         <strong>{course.title}</strong>
       </p>
-      <p>{course.summary}</p>
+      <p
+        style={{
+          fontSize: "1.1rem",
+          lineHeight: 1.6,
+          padding: "1rem 1.25rem",
+          background: "#f1f5f9",
+          borderLeft: "4px solid #0b2a45",
+          borderRadius: 4,
+        }}
+      >
+        Learn to build <strong>production-grade applications, agents, and
+        workflows</strong> on Claude, and to make <strong>engineering
+        decisions</strong> that determine whether code holds up{" "}
+        <strong>when real users depend on it</strong>.
+      </p>
+      {course.intro && (
+        <>
+          <h3>Why Prototypes Break</h3>
+          <p>{course.intro.problem}</p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+              gap: "0.75rem",
+            }}
+          >
+            {course.intro.failures.map((f) => (
+              <div
+                key={f.label}
+                style={{
+                  padding: "0.75rem",
+                  border: "1px solid #e5e7eb",
+                  borderTop: "4px solid #b91c1c",
+                  borderRadius: 8,
+                }}
+              >
+                <strong>{f.label}</strong>
+                <div style={{ fontSize: "0.9rem", color: "#4b5563" }}>
+                  {f.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3>What Decides the Outcome</h3>
+          <p>
+            These four choices decide whether a prototype becomes{" "}
+            <strong>a system you can defend in a leadership review</strong>:
+          </p>
+          <ul style={{ lineHeight: 1.8 }}>
+            {course.intro.decisions.map((d) => (
+              <li key={d}>
+                <strong>{d}</strong>
+              </li>
+            ))}
+          </ul>
+
+          <h3>What You Get</h3>
+          <p>{course.intro.outcome}</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {course.intro.outcomeKeys.map((k) => (
+              <span
+                key={k}
+                style={{
+                  padding: "0.35rem 0.9rem",
+                  borderRadius: 999,
+                  background: "#0b2a45",
+                  color: "#fff",
+                  fontWeight: 600,
+                }}
+              >
+                ✓ {k}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
+      <div style={{ height: "1rem" }} />
       <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
         <a
           href={course.registerUrl}
@@ -333,6 +410,27 @@ export default async function CertificationPage({
       <Section title="Skills You Will Learn" items={cert.skills} />
       <Section title="Build It in The Agent Plant" items={cert.bookLab} />
       <Section title="Ready to Move On When" items={cert.readyWhen} />
+
+      {cert.prepCourse && (
+        <p style={{ marginTop: "2rem", textAlign: "center" }}>
+          <a
+            href={cert.prepCourse.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              padding: "0.75rem 1.5rem",
+              borderRadius: 999,
+              background: "#0b2a45",
+              color: "#fff",
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            Start the Prep Course ↗
+          </a>
+        </p>
+      )}
 
       <footer
         style={{

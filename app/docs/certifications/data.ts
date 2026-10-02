@@ -33,6 +33,13 @@ export type PrepCourse = {
   url: string;
   registerUrl: string;
   summary: string;
+  intro?: {
+    problem: string;
+    failures: { label: string; detail: string }[];
+    decisions: string[];
+    outcome: string;
+    outcomeKeys: string[];
+  };
   objectives: string[];
   prerequisites: string[];
   modules: PrepModule[];
@@ -162,6 +169,25 @@ export const certifications: Certification[] = [
       registerUrl: "https://anthropic-partners.skilljar.com/checkout/24pzndkd8xvcv",
       summary:
         "Learn to build production-grade applications, agents, and workflows on Claude, and to make engineering decisions that determine whether code holds up when real users depend on it.",
+      intro: {
+        problem:
+          "Most developers start by using Claude in a chat window or sending a few API calls. That works until the code must survive production.",
+        failures: [
+          { label: "Untested input", detail: "A prompt that looked solid can fail." },
+          { label: "Broken tool call", detail: "A tool call can break halfway." },
+          { label: "Interrupted stream", detail: "A stream can get interrupted." },
+          { label: "Runaway agent", detail: "An agent can run past its budget." },
+        ],
+        decisions: [
+          "How you structure prompts",
+          "How you define tools",
+          "How you manage context",
+          "How you wire agents",
+        ],
+        outcome:
+          "This course teaches the hands-on builder to operate Claude as a production system, by building the engineering judgment that turns a prototype into something deployed with confidence.",
+        outcomeKeys: ["Reliable", "Affordable", "Controllable"],
+      },
       objectives: [
         "Explain how Claude works at the level that affects engineering: tokens, the context window as a fixed budget, sampling and non-determinism, model tiers, SDK vs REST",
         "Write production-ready prompts (system prompts, XML, few-shot, constraints) and diagnose underperforming prompts",
