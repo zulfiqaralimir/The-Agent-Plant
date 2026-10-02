@@ -24,7 +24,7 @@ export type PrepModuleDetail = {
   eyebrow: string;
   startUrl?: string;
   intro: string;
-  outcomes?: { key: string; text: string }[];
+  outcomes?: { key: string; text: string; marks?: string[] }[];
   disclaimer?: string;
   sections: { title: string; screens: number }[];
   stats: {
@@ -239,18 +239,29 @@ export const certifications: Certification[] = [
               {
                 key: "Tokens, context, sampling",
                 text: "Explain what a token is, how the context window works as a fixed budget, why sampling makes outputs vary, and what non-determinism means for testing and evals.",
+                marks: [
+                  "context window works as a fixed budget",
+                  "sampling makes outputs vary",
+                  "non-determinism means for testing and evals",
+                ],
               },
               {
                 key: "Model family and reasoning",
                 text: "Describe the Claude model family and its capability tiers, and distinguish choosing a model from enabling a reasoning mode such as extended thinking.",
+                marks: ["enabling a reasoning mode such as extended thinking"],
               },
               {
                 key: "Prompting modes",
                 text: "Choose between zero-shot, one-shot, and multi-shot prompting, and weigh the cost and quality trade-off of adding examples.",
+                marks: ["weigh the cost and quality trade-off of adding examples"],
               },
               {
                 key: "Accessing Claude",
                 text: "Describe how a developer accesses Claude: SDK versus raw REST, synchronous versus streaming responses, and asynchronous patterns for high-volume work.",
+                marks: [
+                  "SDK versus raw REST",
+                  "asynchronous patterns for high-volume work",
+                ],
               },
             ],
             disclaimer:

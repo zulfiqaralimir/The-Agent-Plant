@@ -10,6 +10,32 @@ export function generateStaticParams() {
   );
 }
 
+const MARK_COLORS = ["#fde68a", "#bae6fd", "#bbf7d0"];
+
+function highlight(text: string, phrases: string[]) {
+  if (phrases.length === 0) return text;
+  const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const parts = text.split(new RegExp(`(${escaped.join("|")})`));
+  return parts.map((part, i) => {
+    const idx = phrases.indexOf(part);
+    if (idx === -1) return part;
+    return (
+      <mark
+        key={i}
+        style={{
+          background: MARK_COLORS[idx % MARK_COLORS.length],
+          color: "#0b2a45",
+          fontWeight: 700,
+          padding: "0 3px",
+          borderRadius: 3,
+        }}
+      >
+        {part}
+      </mark>
+    );
+  });
+}
+
 export default async function ModulePage({
   params,
 }: {
@@ -111,7 +137,7 @@ export default async function ModulePage({
                 </span>
                 <div>
                   <strong style={{ color: "#0b2a45" }}>{o.key}</strong>
-                  <div>{o.text}</div>
+                  <div>{highlight(o.text, o.marks ?? [])}</div>
                 </div>
               </li>
             ))}
