@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { certifications } from "./certifications/data";
 
 export default function DocsLayout({
   children,
@@ -36,6 +37,17 @@ export default function DocsLayout({
           <Link href="/docs/part-1/chapter-3">
             Chapter 3: Harness Engineering
           </Link>
+
+          <hr style={{ margin: "1rem 0" }} />
+
+          <strong>Claude Certification Track</strong>
+
+          <Link href="/docs/certifications">Overview</Link>
+          {certifications.map((c) => (
+            <Link key={c.slug} href={`/docs/certifications/${c.slug}`}>
+              {c.name}
+            </Link>
+          ))}
         </nav>
       </aside>
 
