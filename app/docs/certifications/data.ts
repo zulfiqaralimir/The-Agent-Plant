@@ -1,3 +1,25 @@
+export type Exam = {
+  role: string;
+  level: string;
+  length: string;
+  questions: string;
+  price: string;
+  validity: string;
+  delivery: string;
+  questionTypes: string;
+  passingScore: string;
+  language: string;
+};
+
+export type Domain = { name: string; weight: number };
+
+export type PrepLink = {
+  title: string;
+  level: string;
+  url: string;
+  blurb: string;
+};
+
 export type Certification = {
   slug: string;
   name: string;
@@ -8,6 +30,10 @@ export type Certification = {
   skills: string[];
   bookLab: string[];
   readyWhen: string[];
+  description?: string;
+  exam?: Exam;
+  domains?: Domain[];
+  prepLinks?: PrepLink[];
 };
 
 export const certifications: Certification[] = [
@@ -43,6 +69,70 @@ export const certifications: Certification[] = [
       "Answers from \"Ask this chapter\" cite the chapter they came from",
       "The quiz generator returns JSON that parses every time",
       "Your evaluation set runs and you can read its results",
+    ],
+    description:
+      "Validates hands-on building with Claude: integrating the Claude API, building agents and workflows, engineering prompts and context, evaluating and debugging outputs, selecting models and optimizing cost, building custom tools and MCP servers, and applying security and safety practices.",
+    exam: {
+      role: "Developer",
+      level: "Foundations",
+      length: "120 minutes",
+      questions: "53",
+      price: "$125 USD",
+      validity: "12 months",
+      delivery: "Online proctored or Pearson test center",
+      questionTypes: "Multiple choice and multiple response",
+      passingScore: "720 (scaled 100–1,000)",
+      language: "English",
+    },
+    domains: [
+      { name: "Applications and Integration", weight: 33.1 },
+      { name: "Model Selection and Optimization", weight: 16.8 },
+      { name: "Agents and Workflows", weight: 14.7 },
+      { name: "Prompt and Context Engineering", weight: 11.0 },
+      { name: "Tools and MCPs", weight: 10.6 },
+      { name: "Security and Safety", weight: 8.1 },
+      { name: "Claude Code", weight: 3.1 },
+      { name: "Eval, Testing, and Debugging", weight: 2.6 },
+    ],
+    prepLinks: [
+      {
+        title: "Claude Certified Developer – Foundations Certification",
+        level: "Certification page",
+        url: "https://anthropic-partners.skilljar.com/claude-certified-developer-foundations-certification",
+        blurb: "The official certification page.",
+      },
+      {
+        title: "Claude Certified Developer – Foundations Prep Course",
+        level: "Free · Start here",
+        url: "https://anthropic-partners.skilljar.com/path/claude-certified-developer-foundations",
+        blurb: "The prep path for this certification.",
+      },
+      {
+        title: "Building with the Claude API",
+        level: "Level 100–200",
+        url: "https://anthropic-partners.skilljar.com/claude-with-the-anthropic-api",
+        blurb:
+          "Authentication, prompt engineering, evaluations, tool use, RAG, agents, production patterns.",
+      },
+      {
+        title: "Claude Code in Action",
+        level: "Level 200",
+        url: "https://anthropic-partners.skilljar.com/claude-code-in-action",
+        blurb: "Context management, hooks, custom commands, Agent SDK.",
+      },
+      {
+        title: "Introduction to Model Context Protocol",
+        level: "Level 200",
+        url: "https://anthropic-partners.skilljar.com/introduction-to-model-context-protocol",
+        blurb:
+          "Build MCP servers and clients in Python; tools, resources, prompts.",
+      },
+      {
+        title: "Exam guide (PDF)",
+        level: "Exam guide",
+        url: "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6nizmqk8tpzpfjvt6qmmav7rh%2Fpublic%2F1783542875%2FClaude+Certified+Developer+%E2%80%93+Foundations+Exam+Guide.pdf",
+        blurb: "The official exam guide.",
+      },
     ],
   },
   {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { certifications } from "./data";
+import FlowFigure from "./FlowFigure";
 
 export default function CertificationsPage() {
   const path = certifications.filter((c) => !c.optional);
@@ -18,6 +19,8 @@ export default function CertificationsPage() {
       <p style={{ fontSize: "1.2rem", color: "#0b2a45", fontWeight: 600 }}>
         Learn it, build it in this book, prove it, then certify it.
       </p>
+
+      <FlowFigure />
 
       <h2>The path</h2>
       <ol style={{ lineHeight: 1.8 }}>
