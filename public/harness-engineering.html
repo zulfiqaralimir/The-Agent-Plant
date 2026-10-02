@@ -400,6 +400,93 @@ jobs:
   </div>
 </section>
 
+<section id="github-actions">
+  <div class="wrap">
+    <h2>GitHub Actions: Automatic Testing for Every Change</h2>
+    <p class="lead">Tests only help if someone runs them. GitHub Actions makes sure they run <strong>every single time</strong>.</p>
+
+    <h3>What is it?</h3>
+    <p><strong>GitHub Actions</strong> is a free robot built into GitHub. It runs commands for you whenever something changes in your repo.</p>
+    <ul>
+      <li>A <strong>check</strong> is one job the robot runs, like "run the tests."</li>
+      <li>Each check ends with a clear result: <strong>pass ✅</strong> or <strong>fail ❌</strong>.</li>
+    </ul>
+
+    <figure class="figure">
+      <svg viewBox="0 0 640 170" role="img" aria-label="Push code, GitHub runs tests, then a pass or fail result">
+        <defs>
+          <path id="ghPath" d="M95 85 L320 85 L545 85"/>
+        </defs>
+        <use href="#ghPath" fill="none" stroke="var(--line)" stroke-width="2"/>
+        <use href="#ghPath" fill="none" stroke="var(--teal)" stroke-width="2" class="flow-dash"/>
+
+        <g>
+          <rect x="20" y="55" width="150" height="60" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5" class="hl d1"/>
+          <text x="95" y="82" text-anchor="middle" font-size="14" font-weight="600" font-family="IBM Plex Sans" fill="var(--ink)">Push code</text>
+          <text x="95" y="100" text-anchor="middle" font-size="11" font-family="IBM Plex Mono" fill="var(--muted)">git push</text>
+        </g>
+        <g>
+          <rect x="245" y="55" width="150" height="60" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5" class="hl d2"/>
+          <text x="320" y="82" text-anchor="middle" font-size="14" font-weight="600" font-family="IBM Plex Sans" fill="var(--ink)">GitHub runs tests</text>
+          <text x="320" y="100" text-anchor="middle" font-size="11" font-family="IBM Plex Mono" fill="var(--muted)">npm test</text>
+        </g>
+        <g>
+          <rect x="470" y="30" width="150" height="46" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5" class="hl d3"/>
+          <text x="545" y="59" text-anchor="middle" font-size="14" font-weight="600" font-family="IBM Plex Sans" fill="var(--ink)">✅ Pass: safe to merge</text>
+          <rect x="470" y="94" width="150" height="46" rx="12" fill="var(--rose-soft)" stroke="var(--rose)" stroke-width="1.5" class="hl d4"/>
+          <text x="545" y="123" text-anchor="middle" font-size="14" font-weight="600" font-family="IBM Plex Sans" fill="var(--ink)">❌ Fail: fix first</text>
+        </g>
+
+        <circle r="7" fill="var(--teal)" class="dot-anim">
+          <animateMotion dur="4s" repeatCount="indefinite">
+            <mpath href="#ghPath"/>
+          </animateMotion>
+        </circle>
+      </svg>
+      <figcaption>Every push triggers the same automatic check.</figcaption>
+    </figure>
+
+    <h3>How it works in 3 steps</h3>
+    <ul>
+      <li><strong>1. Add the file.</strong> Create <code>.github/workflows/test.yml</code> in your repo.</li>
+      <li><strong>2. Push your code.</strong> GitHub runs your tests on <strong>every push</strong>.</li>
+      <li><strong>3. Read the result.</strong> You see ✅ or ❌ next to the change.</li>
+    </ul>
+
+    <h3>Example workflow for Node</h3>
+<pre><code># .github/workflows/test.yml
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test</code></pre>
+
+    <h3>The Python version</h3>
+<pre><code># .github/workflows/test.yml
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -r requirements.txt
+      - run: pytest</code></pre>
+
+    <h3>Why it matters for AI agents</h3>
+    <ul>
+      <li>It is <strong>automatic feedback</strong>. The agent doesn't have to remember to test.</li>
+      <li>It <strong>catches broken code</strong> before it reaches <code>main</code>.</li>
+      <li>A ❌ gives the agent a concrete problem to fix, instead of a guess.</li>
+    </ul>
+    <div class="callout"><strong>Remember:</strong> the robot doesn't care who wrote the code. Human or agent, every change gets the same test.</div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>Step 5: Learn from real products</h2>
