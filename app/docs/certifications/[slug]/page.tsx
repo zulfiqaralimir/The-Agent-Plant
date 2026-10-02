@@ -137,7 +137,13 @@ function Mark({ color, children }: { color: string; children: React.ReactNode })
   );
 }
 
-function PrepCourseSection({ course }: { course: PrepCourse }) {
+function PrepCourseSection({
+  course,
+  certSlug,
+}: {
+  course: PrepCourse;
+  certSlug: string;
+}) {
   const total = course.modules.reduce((sum, m) => sum + m.minutes, 0);
   const linkStyle = {
     display: "inline-block",
@@ -347,14 +353,23 @@ function PrepCourseSection({ course }: { course: PrepCourse }) {
             >
               {i + 1}
             </span>
-            <a
-              href={m.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontWeight: 600, color: "#0b2a45" }}
-            >
-              {m.title} ↗
-            </a>
+            {m.slug && m.detail ? (
+              <Link
+                href={`/docs/certifications/${certSlug}/${m.slug}`}
+                style={{ fontWeight: 600, color: "#0b2a45" }}
+              >
+                {m.title} →
+              </Link>
+            ) : (
+              <a
+                href={m.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontWeight: 600, color: "#0b2a45" }}
+              >
+                {m.title} ↗
+              </a>
+            )}
             <div style={{ fontSize: "0.85rem", color: "#4b5563" }}>
               {m.minutes} min
             </div>
@@ -444,7 +459,7 @@ export default async function CertificationPage({
       {sorted.length > 0 && (
         <>
           <Domains domains={sorted} />
-          {cert.prepCourse && <PrepCourseSection course={cert.prepCourse} />}
+          {cert.prepCourse && <PrepCourseSection course={cert.prepCourse} certSlug={cert.slug} />}
           <h2>Study Order</h2>
           <ol style={{ lineHeight: 1.8 }}>
             {sorted.map((d) => (

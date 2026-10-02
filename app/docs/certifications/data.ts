@@ -20,7 +20,21 @@ export type PrepLink = {
   blurb: string;
 };
 
+export type PrepModuleDetail = {
+  eyebrow: string;
+  intro: string;
+  sections: { title: string; screens: number }[];
+  stats: {
+    screens: number;
+    sections: number;
+    minutes: number;
+    checkpoints: number;
+  };
+};
+
 export type PrepModule = {
+  slug?: string;
+  detail?: PrepModuleDetail;
   title: string;
   url: string;
   minutes: number;
@@ -211,6 +225,21 @@ export const certifications: Certification[] = [
       ],
       modules: [
         {
+          slug: "mso-foundations",
+          detail: {
+            eyebrow: "Developer · Module 1",
+            intro:
+              "Before you write a line of code against Claude, it helps to know what the words mean. This module introduces the model fundamentals and the technical foundations that the rest of the Developer course assumes you already have.",
+            sections: [
+              { title: "Orientation", screens: 1 },
+              { title: "How LLMs Behave", screens: 1 },
+              { title: "Models & Reasoning", screens: 1 },
+              { title: "Prompting Modes", screens: 1 },
+              { title: "Technical Substrate", screens: 1 },
+              { title: "Module Wrap-up", screens: 4 },
+            ],
+            stats: { screens: 9, sections: 6, minutes: 59, checkpoints: 2 },
+          },
           title: "MSO Foundations",
           url: BASE + "mso-foundations",
           minutes: 57,
