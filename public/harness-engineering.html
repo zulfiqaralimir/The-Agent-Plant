@@ -502,6 +502,38 @@ jobs:
         </tbody>
       </table>
     </div>
+    <h3>Inside Claude Code's harness</h3>
+    <p>The Claude Code row lists four ideas. Here is what each one means.</p>
+
+    <div class="qa">
+      <h3><span class="qn c-teal">1</span>Layered memory</h3>
+      <p>Claude reads <code>CLAUDE.md</code> files at different levels and <strong>combines them</strong>.</p>
+      <ul>
+        <li><strong>User level</strong> (<code>~/.claude/CLAUDE.md</code>): your personal rules for every project</li>
+        <li><strong>Project level</strong> (<code>CLAUDE.md</code> in the repo): team rules, shared via Git</li>
+        <li><strong>Folder level:</strong> extra rules for one part of the code</li>
+      </ul>
+      <p class="example"><strong>Example:</strong> "Reply in short answers" goes in your user file, and "Run pytest" goes in the project file.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-violet">2</span>Context compaction</h3>
+      <p>In a long session, the chat fills Claude's memory window. Claude then <strong>summarises the older parts</strong> so it can keep going without losing the thread.</p>
+      <p class="example"><strong>Example:</strong> after two hours of work, <code>/compact</code> shrinks the history to the key decisions and files changed.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-rose">3</span>Hooks</h3>
+      <p>Commands that <strong>run automatically</strong> at set moments, such as before or after Claude edits a file.</p>
+      <p class="example"><strong>Example:</strong> after every edit, a hook runs your formatter or tests automatically.</p>
+    </div>
+
+    <div class="qa">
+      <h3><span class="qn c-amber">4</span>Isolated sub-agents</h3>
+      <p>Claude hands a side task to a helper agent with its <strong>own clean memory</strong>. The helper does the work and sends back only a short result.</p>
+      <p class="example"><strong>Example:</strong> a "code reviewer" sub-agent checks your changes without cluttering the main conversation.</p>
+    </div>
+
     <p><strong>The lesson:</strong> you don't need to copy any one product. Pick the ideas that fit your project size and your team.</p>
   </div>
 </section>
