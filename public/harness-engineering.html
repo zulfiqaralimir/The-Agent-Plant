@@ -60,6 +60,12 @@ header.hero{padding:3.5rem 0 2rem}
 .objective p{margin:0}
 @media (max-width:760px){.hero-grid{grid-template-columns:1fr}}
 
+mark{color:var(--ink);padding:.04em .3em;border-radius:5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hl-amber{background:var(--amber-soft);box-shadow:inset 0 -2px 0 var(--amber)}
+.hl-violet{background:var(--violet-soft);box-shadow:inset 0 -2px 0 var(--violet)}
+.hl-teal{background:var(--teal-soft);box-shadow:inset 0 -2px 0 var(--teal)}
+.hl-rose{background:var(--rose-soft);box-shadow:inset 0 -2px 0 var(--rose)}
+
 /* Sections */
 section{padding:2.4rem 0;border-top:1px solid var(--line)}
 .lead{color:var(--muted);font-size:1.1rem}
@@ -110,10 +116,10 @@ footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px s
   <div class="wide hero-grid">
     <div>
       <h1>Harness Engineering</h1>
-      <p class="tagline"><strong>A powerful model is only half an agent.</strong> The harness is what turns raw intelligence into code you can trust.</p>
+      <p class="tagline"><strong><mark class="hl-amber">A powerful model is only half an agent.</mark></strong> The harness is what <mark class="hl-violet">turns raw intelligence into code</mark> you can trust.</p>
       <div class="objective">
         <h2>Objective of this article</h2>
-        <p>By the end, you'll understand the <strong>five parts of a harness</strong>, see how they work together in one loop, and have a <strong>step-by-step plan</strong> to build a simple harness for your own repo.</p>
+        <p>By the end, you'll understand the <mark class="hl-teal"><strong>five parts of a harness</strong>, see how they work together in one loop,</mark> and have a <strong>step-by-step plan</strong> to build a simple harness <mark class="hl-rose">for your own repo</mark>.</p>
       </div>
     </div>
     <!-- Hero animated vector: model core with five orbiting subsystems -->
