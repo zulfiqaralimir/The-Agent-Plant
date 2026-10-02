@@ -147,9 +147,31 @@ function PrepCourseSection({ course }: { course: PrepCourse }) {
           borderRadius: 4,
         }}
       >
-        Learn to build <strong>production-grade applications, agents, and
-        workflows</strong> on Claude, and to make <strong>engineering
-        decisions</strong> that determine whether code holds up{" "}
+        Learn to{" "}
+        <mark
+          style={{
+            background: "#fde68a",
+            color: "#0b2a45",
+            fontWeight: 700,
+            padding: "0 4px",
+            borderRadius: 3,
+          }}
+        >
+          build production-grade applications, agents, and workflows
+        </mark>{" "}
+        on Claude, and to{" "}
+        <mark
+          style={{
+            background: "#bae6fd",
+            color: "#0b2a45",
+            fontWeight: 700,
+            padding: "0 4px",
+            borderRadius: 3,
+          }}
+        >
+          make engineering decisions
+        </mark>{" "}
+        that determine whether code holds up{" "}
         <strong>when real users depend on it</strong>.
       </p>
       {course.intro && (
